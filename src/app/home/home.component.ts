@@ -11,7 +11,7 @@ import {PostPayload} from '../add-post/post-payload';
 export class HomeComponent implements OnInit {
   pageCur : number = 0;
   pageSize : number = 5;
-  totalPages : number ;
+  totalPages !: number ;
 
   // posts: Observable<Array<PostPayload>>;
   posts: any[] = [];

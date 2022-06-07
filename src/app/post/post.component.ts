@@ -14,15 +14,14 @@ import { CommentService } from '../comment.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  post: PostPayload;
-  permaLink: Number;
+  post!: PostPayload;
+  permaLink!: Number;
   comment: String = '';
-  username: String = '';
+  username!: any ;
   listComment: any;
-  commentPayload: CommentPayload;
+  commentPayload!: CommentPayload;
 
-  constructor(private router: ActivatedRoute, private postService: AddPostService, private commentService: CommentService, 
-    private $localStorage: LocalStorageService) {
+  constructor(private router: ActivatedRoute, private postService: AddPostService, private commentService: CommentService) {
   }
 
   ngOnInit() {
@@ -38,7 +37,7 @@ export class PostComponent implements OnInit {
 
     this.getComment();
 
-    console.log(this.$localStorage.retrieve('username')); 
+    // console.log(this.$localStorage.retrieve('username')); 
   }
 
   getComment(){
@@ -54,11 +53,11 @@ export class PostComponent implements OnInit {
 
     this.commentPayload = {
       postId: this.permaLink, 
-      username: this.$localStorage.retrieve('username'),
+      username: window.localStorage.getItem('username')||'',
       comment: this.comment
     }
 
-    if(this.$localStorage.retrieve('username') == null){
+    if(window.localStorage.getItem('username') == null){
       this.commentPayload.username = 'Anonymous';
     }
 
