@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientInterceptor } from './http-client-interceptor';
 import {AuthGuard} from './auth.guard';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     PostComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterSuccessComponent
+    RegisterSuccessComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

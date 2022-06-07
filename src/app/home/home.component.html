@@ -21,4 +21,7 @@
     </div>
   </div>
 </div>
+<div class="card-footer pb-0 pt-3">
+  <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination>
+</div>
 </div>

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   pageCur : number = 0;
   pageSize : number = 5;
   totalPages !: number ;
+  pageOfPosts: any[] = [];
 
   // posts: Observable<Array<PostPayload>>;
   posts: any[] = [];
@@ -24,7 +25,12 @@ export class HomeComponent implements OnInit {
         this.totalPages = data['totalPages'];
         console.log(this.posts);
     });
-    
+
+  }
+
+  onChangePage(pageOfPosts: Array<any>) {
+      // update current page of items
+      this.pageOfPosts = pageOfPosts;
   }
 
 }
