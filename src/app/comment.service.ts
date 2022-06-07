@@ -19,8 +19,8 @@ export class CommentService {
 //     return this.httpClient.get<Array<CommentPayload>>("http://localhost:8080/api/posts/all");
 //   }
 
-  getComment(postId: Number):Observable<CommentPayload>{
-    return this.httpClient.get<CommentPayload>('http://localhost:8080/api/comment/showAllComment/' + postId);
+  getComment(postId: Number,page:number,pageSize:number):any{
+    return this.httpClient.get<CommentPayload>('http://localhost:8080/api/comment/showAllComment/' + postId +'?page='+page+'&size='+pageSize);
   }
 }
 

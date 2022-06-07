@@ -16,6 +16,8 @@ import { CommentService } from '../comment.service';
 export class PostComponent implements OnInit {
   post!: PostPayload;
   permaLink!: Number;
+  page:number = 0;
+  pageSize:number = 5;
   comment: String = '';
   username!: any ;
   listComment: any;
@@ -41,8 +43,8 @@ export class PostComponent implements OnInit {
   }
 
   getComment(){
-    this.commentService.getComment(this.permaLink).subscribe(data => {
-      this.listComment = data;
+    this.commentService.getComment(this.permaLink,this.page,this.pageSize).subscribe((data:any) => {
+      this.listComment = data['content'];
       console.log(this.listComment);
     },(err: any) => {
       console.log('Failure Response');
