@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AddPostService} from '../add-post.service';
-import {Observable} from 'rxjs';
-import {PostPayload} from '../add-post/post-payload';
 
 @Component({
   selector: 'app-home',
@@ -16,16 +14,20 @@ export class HomeComponent implements OnInit {
 
   // posts: Observable<Array<PostPayload>>;
   posts: any[] = [];
+  value = 0;
   constructor(private postService: AddPostService) { }
 
   ngOnInit() {
-    this.postService.getAllPosts(this.pageCur,this.pageSize).subscribe(data => {
-        this.posts = data['content'];
-        // console.log(data['content']);
-        this.totalPages = data['totalPages'];
-        console.log(this.posts);
-    });
+    this.getPosts();
+  }
 
+  getPosts() {
+    this.postService.getAllPosts(this.pageCur,this.pageSize).subscribe(data => {
+      console.log(data);
+
+        this.posts = data['content'];
+        this.totalPages = data['totalPages'];
+    });
   }
 
   onChangePage(pageOfPosts: Array<any>) {
@@ -33,4 +35,13 @@ export class HomeComponent implements OnInit {
       this.pageOfPosts = pageOfPosts;
   }
 
+  onPageIndexChange(event: any) {
+    this.pageCur = event - 1;
+    this.getPosts();
+    window.scroll({
+           top: 0,
+           left: 0,
+           behavior: 'smooth'
+    });
+  }
 }

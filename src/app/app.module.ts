@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,10 @@ import { HttpClientInterceptor } from './http-client-interceptor';
 import {AuthGuard} from './auth.guard';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PaginationComponent } from './pagination/pagination.component';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -31,10 +35,14 @@ import { PaginationComponent } from './pagination/pagination.component';
     PaginationComponent
   ],
   imports: [
+    CommonModule,
+    NzPaginationModule,
+    NzInputModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'register', component: RegisterComponent},
@@ -46,9 +54,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     ]),
     HttpClientModule,
     EditorModule
-
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

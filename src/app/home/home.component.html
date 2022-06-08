@@ -19,9 +19,12 @@
       </div>
       <hr>
     </div>
+
+    <div>
+      <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
+      <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onPageIndexChange($event)"
+        id="demo"></nz-pagination>
+    </div>
   </div>
-</div>
-<div class="card-footer pb-0 pt-3">
-  <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination>
 </div>
 </div>

@@ -37,9 +37,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   setPage(page: number) {
     // get new pager object for specified page
     this.pager = paginate(this.posts.length, page, this.pageSize, this.maxPages);
+    console.log(this.pager);
+
 
     // get new page of posts from posts array
     var pageOfPosts = this.posts.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    console.log(pageOfPosts);
 
     // call change page function in parent component
     this.changePage.emit(pageOfPosts);
