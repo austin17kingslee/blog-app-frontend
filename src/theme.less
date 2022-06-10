@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary: #66B539;
+  --color-bg: #E8F7DD;
+  --color-bold: #374148;
+  --transition: all 400ms ease;
+}
+
 html {
   background-color: #fff;
   color: #555;
@@ -15,6 +22,7 @@ html {
   font-size: 20px;
   text-rendering: optimizeLegibility;
 }
+
 
 .card {
   width: 22%;
@@ -45,6 +53,47 @@ html {
 .btn-footer {
   width: 100%;
 }
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 3px solid var(--color-primary);
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+label {
+  color: var(--color-primary);
+  font-weight: 400;
+  font-size: 1rem;
+}
+.form-group {
+  padding-bottom: 0.2rem;
+}
+
+fa-icon {
+  color: var(--color-bold);
+
+}
+// a:hover 
 // The prefix to use on all css classes from ant.
 @ant-prefix: ant;
 
@@ -161,9 +210,9 @@ html {
 @border-style-base: solid; // style of a components border
 
 // Outline
-@outline-blur-size: 0;
-@outline-width: 2px;
-@outline-color: @primary-color;
+// @outline-blur-size: 0;
+// @outline-width: 2px;
+// @outline-color: @primary-color;
 
 @background-color-light: hsv(0, 0, 98%); // background of header and selected item
 @background-color-base: hsv(0, 0, 96%); // Default grey background color
@@ -193,12 +242,13 @@ html {
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 @btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 
-@btn-primary-color: #fff;
-@btn-primary-bg: @primary-color;
+// @btn-primary-color: #fff;
+// @btn-primary-bg: @primary-color;
 
-@btn-default-color: @text-color;
-@btn-default-bg: @component-background;
-@btn-default-border: @border-color-base;
+// @btn-default-color: @text-color;
+// @btn-default-bg: @component-background;
+// // @btn-default-bg: var(--color-primary);
+// @btn-default-border: @border-color-base;
 
 @btn-danger-color: #fff;
 @btn-danger-bg: color(~`colorPalette('@{error-color}', 5) `);

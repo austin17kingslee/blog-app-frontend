@@ -11,6 +11,8 @@
   box-sizing: border-box;
 }
 
+
+
 html {
   background-color: #fff;
   color: #555;
@@ -49,3 +51,5 @@ html {
 .btn-footer {
   width: 100%;
 }
+
+

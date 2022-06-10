@@ -12,7 +12,7 @@ hr{
     border-color: #D3D3D3;
 }
 .post-author{
-    color: #66B539;
+    color: var(--color-primary);
     margin-left: 10px;
 }
 .comment-section-container{
@@ -51,15 +51,15 @@ hr{
 .comment-username.text{
     font-size: large;
     font-weight: bolder;
-    color: #66B539;
+    color: var(--color-primary);
     margin-right: 15px;
 }
 .comment-username.date{
-    color: #374148;
+    color: var(--color-bold);
     font-size: small;
     font-weight: 100;
     margin-top: 3.75px;
 }
 .comment-content{
-    color: #374148;
+    color: var(--color-bold);
 }
