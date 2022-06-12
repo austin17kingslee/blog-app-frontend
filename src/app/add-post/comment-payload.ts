@@ -1,6 +1,6 @@
 export class CommentPayload{
     postId: any;
-    comment: String;
-    username: String
+    comment!: String;
+    username!: String
   }
   
