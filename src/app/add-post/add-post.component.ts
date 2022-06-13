@@ -42,4 +42,8 @@ export class AddPostComponent implements OnInit {
       console.log('Failure Response');
     })
   }
+
+  canclePost() {
+    this.router.navigateByUrl('/home')
+  }
 }

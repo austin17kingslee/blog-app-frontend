@@ -9,6 +9,7 @@
 
 :root {
   --color-primary: #66B539;
+  --color-danger: #b54139;
   --color-bg: #E8F7DD;
   --color-bold: #374148;
   --transition: all 400ms ease;
@@ -80,19 +81,40 @@ html {
   box-shadow: none;
 }
 
+.btn-cancel {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.btn-cancel:hover {
+  background-color: transparent;
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
 label {
   color: var(--color-primary);
   font-weight: 400;
   font-size: 1rem;
 }
 .form-group {
-  padding-bottom: 0.2rem;
+  padding-bottom: 1.2rem;
 }
 
 fa-icon {
   color: var(--color-bold);
 
 }
+
+::ng-deep {
+  .ant-pagination {
+    li {
+      // border: none;
+      background-color: var(--color-primary);
+    }
+  }
+}
+
 // a:hover 
 // The prefix to use on all css classes from ant.
 @ant-prefix: ant;
