@@ -18,9 +18,11 @@ import {AuthGuard} from './auth.guard';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,12 +40,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     NzPaginationModule,
+    NzSelectModule,
     NzInputModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'register', component: RegisterComponent},

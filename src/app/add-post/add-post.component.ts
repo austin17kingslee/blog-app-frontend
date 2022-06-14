@@ -15,11 +15,39 @@ export class AddPostComponent implements OnInit {
   postPayload: PostPayload;
   title = new FormControl('');
   body = new FormControl('');
+  lstSelectedTag = new FormControl([]);
+  tagSelect = [
+    {
+      name: "Opinion & Debate",
+      value: 1
+    },
+    {
+      name: "Science & Technology",
+      value: 2
+    },
+    {
+      name: "Music",
+      value: 3
+    },
+    {
+      name: "Sport",
+      value: 4
+    },
+    {
+      name: "Tourism & Culinary",
+      value: 5
+    },
+    {
+      name: "Skill",
+      value: 6
+    }
+  ]
 
   constructor(private addpostService: AddPostService, private router: Router) {
     this.addPostForm = new FormGroup({
       title: this.title,
-      body: this.body
+      body: this.body,
+      lstSelectedTag: this.lstSelectedTag
     });
     this.postPayload = {
       id: '',
@@ -36,6 +64,7 @@ export class AddPostComponent implements OnInit {
   addPost() {
     this.postPayload.content = this.addPostForm.get('body')!.value;
     this.postPayload.title = this.addPostForm.get('title')!.value;
+    this.postPayload.tags = this.addPostForm.get('lstSelectedTag')!.value;
     this.addpostService.addPost(this.postPayload).subscribe(data => {
       this.router.navigateByUrl('/home');
     }, error => {
