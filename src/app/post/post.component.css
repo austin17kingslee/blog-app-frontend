@@ -22,6 +22,7 @@ hr{
 
 .comment-box-container, .comment-section{
     display: flex;
+    justify-content: space-between;
 }
 .comment-box-container{
     margin-bottom: 30px;
@@ -30,7 +31,8 @@ hr{
 
 .comment-box{
     height: 50px;
-    width: 600px;
+    width: 645px;
+    border-radius: 7px;
 }
 ::placeholder{
     padding-left: 20px;
@@ -62,4 +64,16 @@ hr{
 }
 .comment-content{
     color: var(--color-bold);
+}
+
+.comment-button {
+    background-color: #66B539;
+    border: #66B539;
+    width: 130px;
+    height: 50px;
+}
+
+
+.blog-title {
+  color: var(--color-primary);
 }
