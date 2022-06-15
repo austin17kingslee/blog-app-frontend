@@ -1,14 +1,16 @@
 .header{
+    position: sticky;
+    top: 0;
     padding: 0.8rem 2rem;
     background: var(--color-primary);
   }
-  
+
   .title{
     color: var(--color-bg);
     text-decoration: none;
     margin-top: 0.7rem;
   }
-  
+
   .login,.register, .logout,.new-post{
     float: right;
     text-decoration: none;
@@ -19,14 +21,14 @@
     margin-bottom: 10px;
     margin-right: 20px;
   }
-  
+
   .login:hover, .register:hover, .logout:hover, .new-post:hover{
     background-color: var(--color-bg);
     color: var(--color-bold);
   }
-  
-  
-  
+
+
+
   .search-bar {
     display: flex;
     flex-direction: row;
@@ -55,4 +57,3 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  
