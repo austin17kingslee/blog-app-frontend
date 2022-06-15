@@ -48,9 +48,9 @@ export class PostComponent implements OnInit {
   async getPost() {
     await this.postService.getPost(this.permaLink).subscribe((data:PostPayload) => {
       this.post = data;
-      // this.listTag = this.post.listTag.map((tag:TagPayLoad) => {
-      //     return tag.name
-      // });
+      this.listTag = this.post.listTag.map((tag:TagPayLoad) => {
+          return ' ' + tag.name
+      });
     },(err: any) => {
       console.log('Failure Response');
     });

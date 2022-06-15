@@ -9,6 +9,10 @@
             <p>Author: </p>
             <p class="post-author">{{post.username}}</p>
           </span>
+          <span style="display: flex;">
+            <p>Tag: </p>
+            <p class="post-author">{{listTag}}</p>
+          </span>
           <hr>
           <p [innerHTML]="post.content"></p>
           <hr>
@@ -30,7 +34,7 @@
 
         <div class="col-4" style="padding-left: 20px">
           <div>
-            <h2 >Other topics</h2>
+            <h2 >Other related topics</h2>
           </div>
           <div *ngFor="let post of lstOtherPost ">
             <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>

@@ -33,6 +33,7 @@ hr{
     height: 50px;
     width: 645px;
     border-radius: 7px;
+    border: 1px solid #D3D3D3;
 }
 ::placeholder{
     padding-left: 20px;
