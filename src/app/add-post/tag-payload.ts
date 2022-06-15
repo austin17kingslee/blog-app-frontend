@@ -1,4 +1,4 @@
-export class TagPayLoad{
-    id!: String;
-    name!: String;
+export interface TagPayLoad{
+    id: String;
+    name: String;
   }

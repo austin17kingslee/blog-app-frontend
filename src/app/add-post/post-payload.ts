@@ -1,9 +1,9 @@
 import { TagPayLoad } from "./tag-payload";
 
-export class PostPayload{
-  id!: String;
-  content!: String;
-  title!: String;
-  username!: String
-  tags: TagPayLoad[] = [];
+export interface PostPayload{
+  id?: String;
+  content: String;
+  title: String;
+  username: String
+  listTag: any;
 }
