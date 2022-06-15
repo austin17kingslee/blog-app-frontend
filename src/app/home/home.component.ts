@@ -20,14 +20,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getPosts();
   }
-  
+
   getPosts() {
     this.postService.getAllPosts(this.pageCur,this.pageSize).subscribe(data => {
       console.log(data);
-      
+
       this.posts = data['content'];
       console.log("before",this.posts);
-      
+
       this.posts = this.posts.map((e) =>
           e.content.length >  1000
             ? { ...e, content: e.content.slice(0,1500) + "... <strong>[continued]</strong>" }
@@ -55,6 +55,15 @@ export class HomeComponent implements OnInit {
   }
 
   checkLength(post: string) {
-    console.log(post.length);  
+    console.log(post.length);
+  }
+
+  seachPostEvent(data:any) {
+    this.posts = data.content;
+    this.posts = this.posts.map((e) =>
+          e.content.length >  1000
+            ? { ...e, content: e.content.slice(0,1500) + "... <strong>[continued]</strong>" }
+            : e
+        );
   }
 }
