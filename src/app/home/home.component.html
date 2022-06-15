@@ -1,4 +1,4 @@
-<app-header (newPostEvent)="seachPostEvent($event)"></app-header>
+<app-header (newPostEvent)="searchPostEvent($event)" (newTitleEvent)="searchTitleEvent($event)"></app-header>
 <div class="home-container">
 <div class="content">
   <div class="container">
@@ -18,9 +18,14 @@
       <hr>
     </div>
 
-    <div>
+    <div *ngIf="isNotSearching">
       <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
       <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onPageIndexChange($event)"
+        id="demo"></nz-pagination>
+    </div>
+    <div *ngIf="!isNotSearching">
+      <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
+      <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onSearchPageIndexChange($event)"
         id="demo"></nz-pagination>
     </div>
   </div>

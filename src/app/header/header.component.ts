@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   faSearch = faMagnifyingGlass;
   authenticated: boolean = false;
   @Output() newPostEvent = new EventEmitter<any>();
+  @Output() newTitleEvent = new EventEmitter<any>();
   title: string ='';
 
   constructor(private authService: AuthService, private searchService: SearchService) {
@@ -26,11 +27,8 @@ export class HeaderComponent implements OnInit {
     this.searchService.searchAllPosts(0,5,this.title).subscribe(data => {
       console.log(data);
       this.newPostEvent.emit(data.body);
+      this.newTitleEvent.emit(this.title);
     });
-  }
-
-  addNewPost(value: any){
-    this.newPostEvent.emit(value);
   }
 
   isAuthenticated(){

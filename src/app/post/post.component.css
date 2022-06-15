@@ -74,6 +74,11 @@ hr{
     height: 50px;
 }
 
+.comment-button:hover {
+    background: transparent;
+    border: 0.15rem solid var(--color-primary);
+}
+
 
 .blog-title {
   color: var(--color-primary);

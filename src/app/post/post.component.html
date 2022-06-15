@@ -19,7 +19,7 @@
           <div class="comment-box-container">
             <textarea class="comment-box" [(ngModel)]="comment" name="" id="commentBox" cols="30" rows="10"
             placeholder="Add a comment..."></textarea>
-            <button class="comment-button" (click)="submitComment()" class="btn btn-primary btn-footer">
+            <button (click)="submitComment()" class="comment-button btn btn-primary btn-footer">
               Comment
             </button>
           </div>
