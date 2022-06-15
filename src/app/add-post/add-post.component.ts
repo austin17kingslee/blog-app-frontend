@@ -18,28 +18,28 @@ export class AddPostComponent implements OnInit {
   lstSelectedTag = new FormControl([]);
   tagSelect = [
     {
-      name: "Opinion & Debate",
-      value: 1
+      id: 1,
+      name: "Opinion & Debate"
     },
     {
-      name: "Science & Technology",
-      value: 2
+      id: 2,
+      name: "Science & Technology"
     },
     {
-      name: "Music",
-      value: 3
+      id: 3,
+      name: "Music"
     },
     {
-      name: "Sport",
-      value: 4
+      id: 4,
+      name: "Sport"
     },
     {
-      name: "Tourism & Culinary",
-      value: 5
+      id: 5,
+      name: "Tourism & Culinary"
     },
     {
-      name: "Skill",
-      value: 6
+      id: 6,
+      name: "Skill"
     }
   ]
 
@@ -50,11 +50,10 @@ export class AddPostComponent implements OnInit {
       lstSelectedTag: this.lstSelectedTag
     });
     this.postPayload = {
-      id: '',
       content: '',
       title: '',
       username: '',
-      tags: []
+      listTag: []
     }
   }
 
@@ -64,7 +63,7 @@ export class AddPostComponent implements OnInit {
   addPost() {
     this.postPayload.content = this.addPostForm.get('body')!.value;
     this.postPayload.title = this.addPostForm.get('title')!.value;
-    this.postPayload.tags = this.addPostForm.get('lstSelectedTag')!.value;
+    this.postPayload.listTag = this.addPostForm.get('lstSelectedTag')!.value;
     this.addpostService.addPost(this.postPayload).subscribe(data => {
       this.router.navigateByUrl('/home');
     }, error => {
@@ -72,7 +71,8 @@ export class AddPostComponent implements OnInit {
     })
   }
 
-  canclePost() {
+  cancelPost() {
     this.router.navigateByUrl('/home')
   }
+
 }
