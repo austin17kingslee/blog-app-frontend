@@ -1,3 +1,4 @@
+import { TagPayLoad } from './../add-post/tag-payload';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -14,7 +15,12 @@ import { CommentService } from '../comment.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  post!: PostPayload;
+  post: PostPayload = {
+    title: "",
+    content: "",
+    username: "",
+    listTag: []
+  }
   permaLink!: Number;
   page:number = 0;
   pageSize:number = 5;
@@ -23,6 +29,9 @@ export class PostComponent implements OnInit {
   listComment: any;
   commentPayload!: CommentPayload;
 
+  lstOtherPost: any[] = [];
+  listTag = [];
+
   constructor(private router: ActivatedRoute, private postService: AddPostService, private commentService: CommentService) {
   }
 
@@ -30,18 +39,28 @@ export class PostComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.permaLink = params['id'];
     });
-
-    this.postService.getPost(this.permaLink).subscribe((data:PostPayload) => {
-      this.post = data;
-    },(err: any) => {
-      console.log('Failure Response');
-    })
-
+    this.getPost();
     this.getComment();
-
-    // console.log(this.$localStorage.retrieve('username')); 
+    // this.getPostByTagName();
+    this.getPostsTest();
   }
 
+  async getPost() {
+    await this.postService.getPost(this.permaLink).subscribe((data:PostPayload) => {
+      this.post = data;
+      this.listTag = this.post.listTag.map((tag:TagPayLoad) => {
+          return tag.name
+      });
+      console.log('inside method', this.post);
+      console.log('inside method', this.listTag);
+
+    },(err: any) => {
+      console.log('Failure Response');
+    });
+
+    console.log('outside method',this.post);
+
+  }
   getComment(){
     this.commentService.getComment(this.permaLink,this.page,this.pageSize).subscribe((data:any) => {
       this.listComment = data['content'];
@@ -51,10 +70,9 @@ export class PostComponent implements OnInit {
     })
   }
 
-  submitComment(){  
-
+  submitComment(){
     this.commentPayload = {
-      postId: this.permaLink, 
+      postId: this.permaLink,
       username: window.localStorage.getItem('username')||'',
       comment: this.comment
     }
@@ -64,7 +82,6 @@ export class PostComponent implements OnInit {
     }
 
     this.commentService.addComment(this.commentPayload).subscribe(data => {
-      console.log(data);
       this.getComment();
     },(err: any) => {
       console.log('Failure Response');
@@ -73,5 +90,20 @@ export class PostComponent implements OnInit {
     this.comment = '';
   }
 
+  // getPostByTagName() {
+  //   this.getPost();
+  //   this.postService.getPostByTagName(['Sport', 'Tourism & Culinary', 'Skill']).subscribe((data:any) => {
+  //     console.log(this.listTag);
+
+  //     this.lstOtherPost = data;
+  //     console.log(this.lstOtherPost);
+  //   })
+  // }
+
+  getPostsTest() {
+    this.postService.getAllPosts(0,5).subscribe(data => {
+      this.lstOtherPost = data['content'];
+    });
+  }
 
 }
