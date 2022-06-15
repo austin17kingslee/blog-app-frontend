@@ -41,30 +41,24 @@ export class PostComponent implements OnInit {
     });
     this.getPost();
     this.getComment();
-    // this.getPostByTagName();
-    this.getPostsTest();
+    this.getPostByTag();
+    // this.getPostsTest();
   }
 
   async getPost() {
     await this.postService.getPost(this.permaLink).subscribe((data:PostPayload) => {
       this.post = data;
-      this.listTag = this.post.listTag.map((tag:TagPayLoad) => {
-          return tag.name
-      });
-      console.log('inside method', this.post);
-      console.log('inside method', this.listTag);
-
+      // this.listTag = this.post.listTag.map((tag:TagPayLoad) => {
+      //     return tag.name
+      // });
     },(err: any) => {
       console.log('Failure Response');
     });
-
-    console.log('outside method',this.post);
-
   }
+
   getComment(){
     this.commentService.getComment(this.permaLink,this.page,this.pageSize).subscribe((data:any) => {
       this.listComment = data['content'];
-      console.log(this.listComment);
     },(err: any) => {
       console.log('Failure Response');
     })
@@ -90,20 +84,35 @@ export class PostComponent implements OnInit {
     this.comment = '';
   }
 
-  // getPostByTagName() {
-  //   this.getPost();
-  //   this.postService.getPostByTagName(['Sport', 'Tourism & Culinary', 'Skill']).subscribe((data:any) => {
-  //     console.log(this.listTag);
+  getPostByTag() {
+    this.postService.getPostByTag(this.permaLink).subscribe((data:any) => {
+      this.lstOtherPost = data;
+      console.log("other post",this.lstOtherPost);
 
-  //     this.lstOtherPost = data;
-  //     console.log(this.lstOtherPost);
-  //   })
-  // }
+      this.lstOtherPost = this.lstOtherPost.filter(item =>
+        item.length > 0
+      );
 
-  getPostsTest() {
-    this.postService.getAllPosts(0,5).subscribe(data => {
-      this.lstOtherPost = data['content'];
-    });
+      this.lstOtherPost = [].concat.apply([], this.lstOtherPost);
+
+      // this.lstOtherPost = new Set(this.lstOtherPost);
+
+      for (let i=0; i<this.lstOtherPost.length; i++) {
+        for (let j=i+1; j<this.lstOtherPost.length; j++) {
+          if (this.lstOtherPost[i].id == this.lstOtherPost[j].id) {
+            this.lstOtherPost.splice(j, 1);
+          }
+        }
+      }
+
+      console.log("other post",this.lstOtherPost);
+    })
   }
+
+  // getPostsTest() {
+  //   this.postService.getAllPosts(0,5).subscribe(data => {
+  //     this.lstOtherPost = data['content'];
+  //   });
+  // }
 
 }

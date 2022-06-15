@@ -15,12 +15,17 @@ export class AddPostService {
     return this.httpClient.post('http://localhost:8080/api/posts/createPost', postPayload);
   }
 
-  getAllPosts(page:number,pageSize:number){
+  getAllPosts(page:number,pageSize:number): Observable<any>{
     return this.httpClient.get<any>("http://localhost:8080/api/posts/all?page="+page+"&size="+pageSize);}
 
 
-  getPost(permaLink: Number):Observable<PostPayload>{
-    return this.httpClient.get<PostPayload>('http://localhost:8080/api/posts/get/' + permaLink);
+  getPost(permaLink: Number):any{
+    return this.httpClient.get('http://localhost:8080/api/posts/get/' + permaLink);
   }
+
+  getPostByTag(postId: any): any{
+    return this.httpClient.get('http://localhost:8080/api/posts/getPostByTag/' + postId);
+  }
+
 }
 
