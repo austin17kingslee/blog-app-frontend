@@ -23,6 +23,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     RegisterComponent,
     RegisterSuccessComponent,
-    PaginationComponent
+    PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ]),
     HttpClientModule,
     EditorModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NzTagModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent],

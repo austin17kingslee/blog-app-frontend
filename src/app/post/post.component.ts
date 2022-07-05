@@ -41,7 +41,7 @@ export class PostComponent implements OnInit {
     });
     this.getPost();
     this.getComment();
-    this.getPostByTag();
+    this.getRelatedPost();
     // this.getPostsTest();
   }
 
@@ -84,8 +84,8 @@ export class PostComponent implements OnInit {
     this.comment = '';
   }
 
-  getPostByTag() {
-    this.postService.getPostByTag(this.permaLink).subscribe((data:any) => {
+  getRelatedPost() {
+    this.postService.getRelatedPost(this.permaLink).subscribe((data:any) => {
       this.lstOtherPost = data;
       console.log("other post",this.lstOtherPost);
 

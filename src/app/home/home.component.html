@@ -1,33 +1,48 @@
 <app-header (newPostEvent)="searchPostEvent($event)" (newTitleEvent)="searchTitleEvent($event)"></app-header>
 <div class="home-container">
-<div class="content">
-  <div class="container">
-    <div class="row" *ngFor="let post of posts ">
-      <div class="blogpost">
-        <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
-        <div>
-          <i class="fas fa-user"></i> Author: <strong>{{post.username}}</strong>
-        </div>
-        <p [innerHTML]="post.content"></p>
-        <div>
-          <!-- <a type="button" href="/post/{{post.id}}" class="read-more btn btn-default">Read More</a> -->
-            <a href="/post/{{post.id}}" class="read-more">Read more</a>
+  <div class="content">
+    <div class="container">
+      <div class="select-tag">
+        <ul class="tags">
+          <strong style="margin-right:1%; font-size: 16px;">Tag:</strong>
+          <li *ngFor="let tag of lstTagSelect">
+            <a class="tag" (click)="getPostByTag(tag.id)" routerLink="">
+              {{tag.name}}
+            </a>
+          </li>
+        </ul>
+
+        <!-- <nz-tag *ngFor="let tag of tagSelect" nzMode="checkable" [nzChecked]="selectedTags.indexOf(tag) > -1"
+          (nzCheckedChange)="handleChange($any($event), tag)">
+          {{ tag.name }}
+        </nz-tag> -->
+      </div>
+      <div class="row" *ngFor="let post of posts ">
+        <div class="blogpost">
+          <h3><a routerLink="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
+          <div>
+            <i class="fas fa-user"></i> Author: <strong>{{post.username}}</strong>
+          </div>
+          <p [innerHTML]="post.content"></p>
+          <div>
+            <!-- <a type="button" href="/post/{{post.id}}" class="read-more btn btn-default">Read More</a> -->
+              <a routerLink="/post/{{post.id}}" class="read-more">Read more</a>
+          </div>
+          <hr>
         </div>
         <hr>
       </div>
-      <hr>
-    </div>
 
-    <div *ngIf="isNotSearching">
-      <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
-      <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onPageIndexChange($event)"
-        id="demo"></nz-pagination>
-    </div>
-    <div *ngIf="!isNotSearching">
-      <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
-      <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onSearchPageIndexChange($event)"
-        id="demo"></nz-pagination>
+      <div *ngIf="isNotSearching">
+        <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
+        <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onPageIndexChange($event)"
+          id="demo"></nz-pagination>
+      </div>
+      <div *ngIf="!isNotSearching">
+        <!-- <app-pagination [posts]="posts" (changePage)="onChangePage($event)"></app-pagination> -->
+        <nz-pagination [nzPageIndex]="0" [nzTotal]="100" [nzPageSize]="5" (nzPageIndexChange)="onSearchPageIndexChange($event)"
+          id="demo"></nz-pagination>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -23,8 +23,12 @@ export class AddPostService {
     return this.httpClient.get('http://localhost:8080/api/posts/get/' + permaLink);
   }
 
-  getPostByTag(postId: any): any{
-    return this.httpClient.get('http://localhost:8080/api/posts/getPostByTag/' + postId);
+  getRelatedPost(postId: any): any{
+    return this.httpClient.get('http://localhost:8080/api/posts/getRelatedPost/' + postId);
+  }
+
+  getPostByTag(tagId: any): any{
+    return this.httpClient.get('http://localhost:8080/api/posts/getPostByTag/' + tagId);
   }
 
 }
