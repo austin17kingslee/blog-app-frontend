@@ -141,14 +141,29 @@ export class HomeComponent implements OnInit {
   }
 
   getPostByTag(data: number) {
+    // this.tagSelected = {}
+    // this.lstTagSelect = this.lstTagSelect.map(obj => obj.id = data);
+    // this.tagSelected.isSelecting = true;
+    console.log(data);
+    this.lstTagSelect = this.lstTagSelect.map((obj) => {
+      if(obj.isSelecting = true) {
+          obj.isSelecting = false;
+      }
+      return obj
+    });
+    this.lstTagSelect = this.lstTagSelect.map((obj) => {
+      if(obj.id == data) {
+          obj.isSelecting = true;
+      }
+      return obj
+    });
     this.tagService.getPostByTag(data).subscribe((data:any) => {
       console.log(data);
-
       this.posts = data.map((e:any) =>
-          e.content.length >  1000
-            ? { ...e, content: e.content.slice(0,1500) + "... <strong>[continued]</strong>" }
-            : e
-        );
+      e.content.length >  1000
+      ? { ...e, content: e.content.slice(0,1500) + "... <strong>[continued]</strong>" }
+      : e
+      );
     });
   }
 }

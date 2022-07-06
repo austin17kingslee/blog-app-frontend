@@ -6,7 +6,7 @@
         <ul class="tags">
           <strong style="margin-right:1%; font-size: 16px;">Tag:</strong>
           <li *ngFor="let tag of lstTagSelect">
-            <a class="tag" (click)="getPostByTag(tag.id)" routerLink="">
+            <a class="tag" (click)="getPostByTag(tag.id)" [class.tag-active]="tag.isSelecting" routerLink="">
               {{tag.name}}
             </a>
           </li>

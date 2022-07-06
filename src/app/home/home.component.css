@@ -92,3 +92,12 @@
 nz-tag:hover {
   background-color: var(--color-primary);
 }
+
+.tag-active {
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.tag-active::after {
+  border-left-color: var(--color-primary);
+}
